@@ -17,6 +17,8 @@ def main_script(command: str) -> None:
             with open(f"Ip_information{ip}.txt", "w") as ip_info:
                 ip_info.write(api_req.text)
 
+        case ["help"]:
+            print("ip, ipinfo - Get information on an ip")
 
         case _:
             print("Command currently not found")
