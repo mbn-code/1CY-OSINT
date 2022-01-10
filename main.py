@@ -4,8 +4,6 @@ import sys
 import platform
 from time import sleep
 import requests
-from requests.api import request
-
 
 version = "BETA-V1.10"
 
@@ -18,8 +16,6 @@ def main_script(command: str) -> None:
             api_req = requests.get(f"https://ipinfo.io/{ip}")
             with open(f"Ip_information{ip}.txt", "w") as ip_info:
                 ip_info.write(api_req.text)
-
-            
 
         case _:
             print("Command currently not found")
