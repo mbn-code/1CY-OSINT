@@ -1,5 +1,4 @@
  # Main file made for running with python3.10
-from audioop import reverse
 import os
 import sys
 import platform
@@ -9,23 +8,34 @@ import random
 
 version = "BETA-V1.10"
 
+#def is_ip(address):
+#    return address.replace('.', '').isnumeric()
+
+from IPy import IP
+IP('127.0.0.1')
+
+
 def main_script(command: str) -> None:
     match command.split():
         case ["version"]:
             print(f"Version: {version}")
 
         case ["ip" | "ipinfo", ip]:
-            
-        
-
             api_req = requests.get(f"https://ipinfo.io/{ip}")
             with open(f"Ip_information{ip}.txt", "w") as ip_info:
                 ip_info.write(api_req.text)
 
             os.system(f"whois {ip} > whois_{ip}.txt")
-
-
-            wpscan_ip = os.system(f"wpscan --url http://{ip}/ > wpscan_{ip}.txt")
+            os.system(f"wpscan --url http://{ip}/ > wpscan_{ip}.txt")
+            os.system(f"dnsmap {ip} > dnsmap_{ip}.txt")
+            os.system(f"dig {ip} > dig_{ip}.txt")
+            os.system(f"dig -x {ip} +noall +answer > dig_noall_answer_{ip}.txt")
+            os.system(f"whatweb {ip} > whatweb_{ip}.txt")
+            os.system(f"certgraph {ip} -details -json -verbose -dns -ct-subdomains > certgraph_{ip}.txt")
+            os.system(f"atk6-dnsdict6 -D {ip} > atk6-dnsdict6_{ip}.txt")
+            os.system(f"unicornscan {ip} > unicornscan_{ip}.txt")
+            os.system(f"sslscan {ip} > sslscan_{ip}.txt")
+            os.system(f"lbd {ip} > lbd_{ip}.txt")
 
 
         case ["help"]:
