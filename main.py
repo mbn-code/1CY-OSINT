@@ -41,9 +41,13 @@ def main_script(command: str) -> None:
             os.system(f"sslscan {ip} > sslscan_{ip}.txt")
             os.system(f"lbd {ip} > lbd_{ip}.txt")
 
-        case ["name " | "username", name]:
+        case ["name" | "username"]:
             print("Starting name / Username scan")
-            
+            os.system("python3 Google_search.py")
+
+
+
+
 
         case ["help"]:
             print("ip, ipinfo - Get information on an ip")
