@@ -5,14 +5,12 @@ import platform
 from time import sleep
 import requests
 import random
+import phonenumbers
+from phonenumbers import carrier,geocoder,timezone
+
 
 version = "BETA-V1.10"
 
-#def is_ip(address):
-#    return address.replace('.', '').isnumeric()
-
-from IPy import IP
-IP('127.0.0.1')
 
 
 def main_script(command: str) -> None:
@@ -45,7 +43,24 @@ def main_script(command: str) -> None:
             print("Starting name / Username scan")
             os.system("python3 Google_search.py")
 
+            sherlock_name_input = input("Name for sherlock: ")
+            with open(f"sherlock_{sherlock_name_input}_.txt", "w") as sherlock_name:
+                sherlock_search = os.system(f"sherlock {sherlock_name_input}")
+                sherlock_name.write(sherlock_search)
 
+
+        case ["phonenumber" | "ph" | "phone"]:
+            Num = input("Phone Number: ")
+            Num = phonenumbers.parse(Num)
+
+            carrier_Num = carrier.name_for_number(Num, "en")
+            geocoder_num = geocoder.description_for_number(Num, "en")
+            Validity_Num = "Valid Number: ", phonenumbers.is_valid_number(Num)
+
+            with open(f"PhoneNum_{Num}_Details.txt", "w") as NumDetails:
+                NumDetails.write(str(carrier_Num) + "\n")
+                NumDetails.write(str(geocoder_num)+ "\n")
+                NumDetails.write(str(Validity_Num)+ "\n")
 
 
 
