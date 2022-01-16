@@ -62,18 +62,23 @@ def main_script(command: str) -> None:
                 NumDetails.write(str(geocoder_num)+ "\n")
                 NumDetails.write(str(Validity_Num)+ "\n")
 
-
+        case ["email" | "mail", mail]:
+            print("Running mail Osint scan")
+            email_rep_curl = os.system(f"curl emailrep.io/{mail}")
+            with open(f"email_{mail}_rep.txt", "w") as email_rep:
+                email_rep.write(email_rep_curl)
 
         case ["help"]:
             print("""
 ip, ipinfo - Get information on an ip
 name, username - Get information on someone from their name or username
 phone, phonenumber - Get basic informatino in an iphone num
+email, mail - Gather information on an mail
 """)
 
         case _:
-            print("Command currently not found")
             os.system(command)
+            print("Command currently not found")
 
 
 def main():
