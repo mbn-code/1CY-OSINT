@@ -46,7 +46,7 @@ def main_script(command: str) -> None:
             sherlock_name_input = input("Name for sherlock: ")
             with open(f"sherlock_{sherlock_name_input}_.txt", "w") as sherlock_name:
                 sherlock_search = os.system(f"sherlock {sherlock_name_input}")
-                sherlock_name.write(sherlock_search)
+                sherlock_name.write(str(sherlock_search))
 
 
         case ["phonenumber" | "ph" | "phone"]:
@@ -65,7 +65,11 @@ def main_script(command: str) -> None:
 
 
         case ["help"]:
-            print("ip, ipinfo - Get information on an ip")
+            print("""
+ip, ipinfo - Get information on an ip
+name, username - Get information on someone from their name or username
+phone, phonenumber - Get basic informatino in an iphone num
+""")
 
         case _:
             print("Command currently not found")
@@ -73,6 +77,7 @@ def main_script(command: str) -> None:
 
 
 def main():
+    print()
     while 1:
         list_greetings = [
             "Hello, ", "Hola, ","Hej, ", "Marhaba, ",
