@@ -24,13 +24,8 @@ def main_script(command: str) -> None:
                 ip_info.write(api_req.text)
 
             os.system(f"whois {ip} > whois_{ip}.txt")
-            os.system(f"wpscan --url http://{ip}/ > wpscan_{ip}.txt")
-            print("Running dnsmap, this can take a while")
-            os.system(f"dnsmap {ip}")
-            os.system(f"dnsmap {ip} > dnsmap_{ip}.txt")
             os.system(f"dig {ip} > dig_{ip}.txt")
             os.system(f"dig -x {ip} +noall +answer > dig_noall_answer_{ip}.txt")
-            os.system(f"whatweb {ip} > whatweb_{ip}.txt")
             os.system(f"certgraph {ip} -details -json -verbose -dns -ct-subdomains > certgraph_{ip}.txt")
             os.system(f"atk6-dnsdict6 -D {ip} > atk6-dnsdict6_{ip}.txt")
             print("Unicornscan in progress, this can take a while")
