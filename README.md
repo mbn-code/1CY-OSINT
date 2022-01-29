@@ -2,7 +2,7 @@
 
 ![Screenshot](assets/Logo.png)
 
-![Screenshot](assets/preview.png)
+
 
 1CY-OSINT is the automated OSINT - Information gather tool made for every skill level.
 It creates files for all the kinds of scans that it makes and writes them for easy viewability.
