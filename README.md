@@ -1,6 +1,6 @@
 # 1CY-OSINT
 
-➊🅒🅨⓿🅢🅘🅝🅣
+![Screenshot](assets/Logo.png)
 
 ![Screenshot](assets/preview.png)
 
