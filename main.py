@@ -6,7 +6,7 @@ from time import sleep
 import requests
 import random
 import phonenumbers
-from phonenumbers import carrier,geocoder,timezone
+from phonenumbers import carrier,geocoder
 
 
 version = "BETA-V1.10"
