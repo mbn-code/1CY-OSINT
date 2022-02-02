@@ -7,11 +7,7 @@ import requests
 import random
 import phonenumbers
 from phonenumbers import carrier,geocoder
-
-
 version = "BETA-V1.10"
-
-
 
 def main_script(command: str) -> None:
     match command.split():
@@ -38,14 +34,14 @@ def main_script(command: str) -> None:
             print("Starting name / Username scan")
             os.system("python3 Google_search.py")
 
-            sherlock_name_input = input("Name for sherlock: ")
+            sherlock_name_input = input("--> Name for sherlock: ")
             with open(f"sherlock_{sherlock_name_input}_.txt", "w") as sherlock_name:
                 sherlock_search = os.system(f"sherlock {sherlock_name_input}")
                 sherlock_name.write(str(sherlock_search))
 
 
         case ["phonenumber" | "ph" | "phone"]:
-            Num = input("Phone Number: ")
+            Num = input("--> Phone Number: ")
             Num = phonenumbers.parse(Num)
 
             carrier_Num = carrier.name_for_number(Num, "en")
@@ -95,7 +91,7 @@ def main():
             "Konnichiwa, ","Ahn nyong ha se yo, ","Cześć, ","Olá, ","Sawasdee, ","Merhaba, "]
 
         random_greeting = random.choice(list_greetings)
-        command = input(f"{random_greeting}{platform.node()}: ")
+        command = input(f"--> {random_greeting}{platform.node()}: ")
         main_script(command)
     
 if __name__ == "__main__":
@@ -106,7 +102,7 @@ if __name__ == "__main__":
     else:
         pass
 
-    words = "Welcome to 1CY-OSINT.\n"
+    words = "-> Welcome to 1CY-OSINT <-\n"
     for char in words:
         sys.stdout.write(char)
         sys.stdout.flush()
