@@ -4,6 +4,8 @@ except ImportError:
     print("import error 'googlesearch'")
     print("Run: pip3 install googlesearch") 
 
+import requests
+
 def main():
     # search string
     q = input("What do you want to search up?: ")
@@ -24,7 +26,8 @@ def main():
             google_results.write("https://github.com/CollinEdward/1CY-OSINT\n\n")
     with open(f"{q}_Google_OSINT.txt", "a") as google_results:
         for x in search(q, num=20, pause= 2):
-            google_results.write(x + "\n")
+            request = requests.get(x)
+            google_results.write(f"--> " + x + " <--"+str(request)+"-->" + "\n")
 
 
 if __name__ == '__main__':
