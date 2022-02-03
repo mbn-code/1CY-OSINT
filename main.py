@@ -69,8 +69,6 @@ email, mail - Gather information on an mail
 
         case _:
             os.system(command)
-            print("Command currently not found")
-
 
 def main():
     print("""░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
