@@ -57,7 +57,7 @@ def main_script(command: str) -> None:
             print("Running mail Osint scan")
             email_rep_curl = os.system(f"curl emailrep.io/{mail}")
             with open(f"email_{mail}_rep.txt", "w") as email_rep:
-                email_rep.write(email_rep_curl)
+                email_rep.write(str(email_rep_curl))
 
         case ["help"]:
             print("""
