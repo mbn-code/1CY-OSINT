@@ -1,6 +1,6 @@
 # 1CY-OSINT
 
-This tool uses python3.10 ![Download](https://www.python.org/)
+This tool uses python3.10 
 
 1CY-OSINT is the automated OSINT - Information gather tool made for every skill level.
 It creates files for all the kinds of scans that it makes and writes them for easy viewability.
