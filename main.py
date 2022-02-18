@@ -7,7 +7,7 @@ import requests
 import random
 import phonenumbers
 from phonenumbers import carrier,geocoder
-version = "BETA-V1.10"
+version = "BETA-V1.2"
 
 def main_script(command: str) -> None:
     match command.split():
