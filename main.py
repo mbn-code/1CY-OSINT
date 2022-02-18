@@ -52,12 +52,22 @@ def main_script(command: str) -> None:
                 NumDetails.write(str(carrier_Num) + "\n")
                 NumDetails.write(str(geocoder_num)+ "\n")
                 NumDetails.write(str(Validity_Num)+ "\n")
+                
+            
 
         case ["email" | "mail", mail]:
             print("Running mail Osint scan")
+            
+            print("Starting mailfy")
+            os.system("python3 mailfy.py")
+            
+            print("Email reputation check")
             email_rep_curl = os.system(f"curl emailrep.io/{mail}")
             with open(f"email_{mail}_rep.txt", "w") as email_rep:
                 email_rep.write(str(email_rep_curl))
+
+            
+
 
         case ["help"]:
             print("""
