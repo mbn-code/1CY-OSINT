@@ -51,9 +51,13 @@ def main_script(command: str) -> None:
 
         case ["email" | "mail", mail]:
             print("Running mail Osint scan")
+            print("Running emailrep")
+            os.system("emailrep {mail}")
+
             print("Starting mailfy")
-            os.system("python3 mailfy.py")
+            os.system("python3 scripts/mailfy.py")
             
+            print("Doing alternative email rep check")
             print("Email reputation check")
             email_rep_curl = os.system(f"curl emailrep.io/{mail}")
             with open(f"email_{mail}_rep.txt", "w") as email_rep:
