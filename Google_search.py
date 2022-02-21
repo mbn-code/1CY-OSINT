@@ -1,8 +1,5 @@
-try: # checks if googlesearch is installed in pip
-    from googlesearch import search
-except ImportError:
-    print("import error 'googlesearch'")
-    print("Run: pip3 install googlesearch") 
+import os
+from googlesearch import search
 
 import requests
 

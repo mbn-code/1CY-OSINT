@@ -20,3 +20,4 @@ colorama
 configparser
 cfscrape
 duckpy
+googlesearch-python
