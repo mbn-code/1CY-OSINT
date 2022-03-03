@@ -1,8 +1,5 @@
-try: # checks if googlesearch is installed in pip
-    from googlesearch import search
-except ImportError:
-    print("import error 'googlesearch'")
-    print("Run: pip3 install googlesearch") 
+import os
+from googlesearch import search
 
 import requests
 
@@ -25,7 +22,7 @@ def main():
 """)
             google_results.write("https://github.com/CollinEdward/1CY-OSINT\n\n")
     with open(f"{q}_Google_OSINT.txt", "a") as google_results:
-        for x in search(q, num=20, pause= 2):
+        for x in search(q, num=20, pause=2):
             request = requests.get(x)
             google_results.write(f"--> " + x + " <--"+str(request)+"-->" + "\n")
 

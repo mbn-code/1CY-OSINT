@@ -7,7 +7,7 @@ import requests
 import random
 import phonenumbers
 from phonenumbers import carrier,geocoder
-version = "BETA-V1.10"
+version = "BETA-V1.2"
 
 def main_script(command: str) -> None:
     match command.split():
@@ -22,10 +22,6 @@ def main_script(command: str) -> None:
             os.system(f"whois {ip} > whois_{ip}.txt")
             os.system(f"dig {ip} > dig_{ip}.txt")
             os.system(f"dig -x {ip} +noall +answer > dig_noall_answer_{ip}.txt")
-            os.system(f"certgraph {ip} -details -json -verbose -dns -ct-subdomains > certgraph_{ip}.txt")
-            os.system(f"atk6-dnsdict6 -D {ip} > atk6-dnsdict6_{ip}.txt")
-            print("Unicornscan in progress, this can take a while")
-            os.system(f"unicornscan {ip} > unicornscan_{ip}.txt")
             print("Fast sslscan in progreess, this can still take some time")
             os.system(f"sslscan {ip} > sslscan_{ip}.txt")
             os.system(f"lbd {ip} > lbd_{ip}.txt")
@@ -33,7 +29,6 @@ def main_script(command: str) -> None:
         case ["name" | "username"]:
             print("Starting name / Username scan")
             os.system("python3 Google_search.py")
-
             sherlock_name_input = input("--> Name for sherlock: ")
             with open(f"sherlock_{sherlock_name_input}_.txt", "w") as sherlock_name:
                 sherlock_search = os.system(f"sherlock {sherlock_name_input}")
@@ -43,7 +38,6 @@ def main_script(command: str) -> None:
         case ["phonenumber" | "ph" | "phone"]:
             Num = input("--> Phone Number: ")
             Num = phonenumbers.parse(Num)
-
             carrier_Num = carrier.name_for_number(Num, "en")
             geocoder_num = geocoder.description_for_number(Num, "en")
             Validity_Num = "Valid Number: ", phonenumbers.is_valid_number(Num)
@@ -52,9 +46,19 @@ def main_script(command: str) -> None:
                 NumDetails.write(str(carrier_Num) + "\n")
                 NumDetails.write(str(geocoder_num)+ "\n")
                 NumDetails.write(str(Validity_Num)+ "\n")
+                
+            
 
         case ["email" | "mail", mail]:
             print("Running mail Osint scan")
+            print("Running emailrep")
+            os.system("emailrep {mail}")
+
+            print("Starting mailfy")
+            os.system("python3 scripts/mailfy.py")
+            
+            print("Doing alternative email rep check")
+            print("Email reputation check")
             email_rep_curl = os.system(f"curl emailrep.io/{mail}")
             with open(f"email_{mail}_rep.txt", "w") as email_rep:
                 email_rep.write(str(email_rep_curl))
@@ -100,7 +104,7 @@ if __name__ == "__main__":
     else:
         pass
 
-    words = "-> Welcome to 1CY-OSINT <-\n"
+    words = "-----> Welcome to 1CY-OSINT <----\n"
     for char in words:
         sys.stdout.write(char)
         sys.stdout.flush()
