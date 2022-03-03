@@ -8,7 +8,7 @@ import requests
 
 def main():
     # search string
-    q = input("What do you want to search up?: ")
+    q = input("Name to scrape: ")
 
     # For the search history file, opens and writes the results
     with open(f"{q}_Google_OSINT.txt", "w") as google_results:
