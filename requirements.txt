@@ -21,3 +21,5 @@ configparser
 cfscrape
 duckpy
 googlesearch-python
+requests
+phonenumbers
